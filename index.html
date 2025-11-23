@@ -32,18 +32,19 @@
       header{ background: rgba(8,10,16,0.75); backdrop-filter: blur(6px); }
     }
 
-  body{
+body{
   margin:0;
   font-family: Inter, system-ui;
   line-height:1.6;
 
-  /* Fix heading visibility */
+  /* Visible text colors */
   --heading-color: #ffffff;
   --muted-color: #d1d5db;
+  --body-color: #e5e7eb;  /* Light grey for normal text */
 
   background-attachment: fixed;
   background-image: linear-gradient(to bottom,
-      rgba(12,15,23,0.78),   /* Lighter overlay for readability */
+      rgba(12,15,23,0.78),
       rgba(12,15,23,0.76)
     ),
     url('parallax-bg.jpg');
@@ -51,14 +52,27 @@
   background-position: center;
 }
 
-/* Apply forced visible headings */
+/* Force visible headings */
 h1, h2, h3 {
   color: var(--heading-color) !important;
 }
 
-/* Make muted text readable */
+/* Muted text */
 .muted {
   color: var(--muted-color) !important;
+}
+
+/* Make general text readable */
+.card p,
+.card span,
+.card div {
+  color: var(--body-color) !important;
+}
+
+/* Ensure links stay purple (your accent color) */
+.publisher-link {
+  color: var(--accent) !important;
+  font-weight: 600;
 }
 
 
@@ -276,4 +290,5 @@ h1, h2, h3 {
 
 </body>
 </html>
+
 
