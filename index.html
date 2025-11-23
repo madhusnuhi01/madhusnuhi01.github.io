@@ -17,8 +17,6 @@
       --muted-dark:#9ca3af;
       --card-light:#f8f9fb;
       --card-dark:#111827;
-      --glass-light: rgba(255,255,255,0.6);
-      --glass-dark: rgba(10,12,18,0.5);
     }
 
     @media (prefers-color-scheme: light) {
@@ -34,103 +32,76 @@
       header{ background: rgba(8,10,16,0.75); backdrop-filter: blur(6px); }
     }
 
-    /* base */
-    *{box-sizing:border-box}
     body{
       margin:0;
-      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      font-family: Inter, system-ui;
       line-height:1.6;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      /* parallax background (upload parallax-bg.jpg to repo root) */
       background-attachment: fixed;
       background-image: linear-gradient(to bottom, rgba(12,15,23,0.88), rgba(12,15,23,0.86)), url('parallax-bg.jpg');
       background-size: cover;
       background-position: center;
-      transition: background 0.3s, color 0.3s;
     }
 
-    .container{ max-width:1100px; margin:0 auto; padding:1.0rem; }
+    .container{ max-width:1100px; margin:0 auto; padding:1rem; }
 
-    header{ position:sticky; top:0; z-index:60; border-bottom:1px solid rgba(255,255,255,0.04); }
-    .nav{ display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:.9rem 0; }
+    header{ position:sticky; top:0; z-index:60; border-bottom:1px solid rgba(255,255,255,0.05); }
+    .nav{ display:flex; align-items:center; justify-content:space-between; padding:.9rem 0; }
 
-    /* nav */
-    nav ul{ list-style:none; margin:0; padding:0; display:flex; gap:1rem; align-items:center; }
-    nav a{ color:var(--accent); text-decoration:none; font-weight:600; padding-bottom:4px; position:relative; }
-    nav a::after{ content:""; position:absolute; left:0; bottom:0; height:2px; width:0; background:var(--accent); border-radius:2px; transition:width .22s ease;}
+    nav ul{ list-style:none; display:flex; gap:1.2rem; padding:0; margin:0; }
+    nav a{ color:var(--accent); text-decoration:none; font-weight:600; position:relative; padding-bottom:4px; }
+    nav a::after{ content:""; position:absolute; left:0; bottom:0; height:2px; width:0; background:var(--accent); transition:.2s; }
     nav a:hover::after{ width:100%; }
 
-    /* hero */
-    .hero{ display:grid; grid-template-columns: 320px 1fr; gap:2.4rem; align-items:center; padding:3.5rem 0; }
-    .profile-col{ display:flex; flex-direction:column; gap:1rem; align-items:center; }
-    .profile-pic{ width:280px; height:280px; object-fit:cover; border-radius:10px; box-shadow:0 14px 30px rgba(2,6,23,0.6); border:1px solid rgba(255,255,255,0.04); }
+    .hero{ display:grid; grid-template-columns:320px 1fr; gap:2.4rem; padding:3.5rem 0; align-items:center; }
+    .profile-col{ text-align:center; }
+    .profile-pic{ width:280px; height:280px; object-fit:cover; border-radius:12px; box-shadow:0 12px 28px rgba(0,0,0,0.55); }
 
-    h1{ font-size:2.2rem; margin:0 0 .4rem 0; letter-spacing: -0.01em; }
-    .lead{ margin:0; color:var(--muted-dark); font-size:1rem; max-width:70ch; }
+    h1{ font-size:2.2rem; margin-top:0; }
+    h2{ font-size:1.8rem; margin-bottom:1rem; }
 
-    .actions{ margin-top:1rem; display:flex; gap:.8rem; flex-wrap:wrap; }
-    .btn{ display:inline-block; padding:.6rem .95rem; border-radius:8px; background:var(--accent); color:white; font-weight:700; text-decoration:none; box-shadow: 0 6px 18px rgba(91,33,182,0.14); transition:transform .15s ease; }
-    .btn:hover{ transform:translateY(-3px); background:var(--accent-hover); }
+    .btn{ display:inline-block; background:var(--accent); padding:.6rem 1rem; border-radius:8px; color:white; font-weight:700; text-decoration:none; }
+    .btn:hover{ background:var(--accent-hover); }
 
-    .icons{ display:flex; gap:.8rem; margin-top:.8rem; align-items:center; }
-    .icons svg{ width:28px; height:28px; fill:currentColor; color:var(--accent); opacity:.95; transition:transform .18s ease, opacity .18s; }
-    .icons a:hover svg{ transform:scale(1.12); opacity:1; }
+    .icons{ display:flex; gap:.8rem; margin-top:1rem; }
+    .icons svg{ width:28px; height:28px; fill:var(--accent); }
 
-    /* cards + sections */
     .card{ padding:1.25rem; border-radius:12px; }
     .grid{ display:grid; gap:1rem; }
     @media(min-width:900px){ .grid-2{ grid-template-columns:repeat(2,1fr); } }
 
-    .section{ padding:2.0rem 0; border-top:1px solid rgba(255,255,255,0.04); }
+    .section{ padding:2rem 0; border-top:1px solid rgba(255,255,255,0.05); }
 
-    /* publications */
-    .pub{ display:block; margin-bottom:1rem; padding-bottom:.6rem; border-bottom:1px dashed rgba(255,255,255,0.03); }
-    .pub .meta{ color:var(--muted-dark); font-size:.95rem; margin-top:.25rem; }
+    .pub { margin-bottom:1rem; padding-bottom:1rem; border-bottom:1px dashed rgba(255,255,255,0.07); }
 
-    /* CV viewer */
-    .cv-frame{ width:100%; height:640px; border-radius:10px; overflow:hidden; border:1px solid rgba(255,255,255,0.06); }
+    footer{ text-align:center; padding:2rem; font-size:.9rem; color:var(--muted-dark); }
 
-    /* subtle animation */
-    .fade-up{ opacity:0; transform:translateY(10px); animation:fadeUp .7s ease forwards; }
-    .fade-up.delay{ animation-delay:.12s; }
-    @keyframes fadeUp{ to{ opacity:1; transform:none; } }
-
-    /* responsive */
-    @media (max-width:920px){
-      .hero{ grid-template-columns: 1fr; padding:2rem 0; }
-      .profile-pic{ width:160px; height:160px; }
-      .profile-col{ flex-direction:row; gap:1rem; align-items:center; }
+    @media(max-width:900px){
+      .hero{ grid-template-columns:1fr; text-align:center; }
+      .profile-pic{ width:180px; height:180px; }
     }
-    @media (max-width:520px){
-      nav ul{ display:none; } /* mobile: use direct in-page links or add mobile menu later */
-    }
-
-    footer{ padding:2rem 0; text-align:center; color:var(--muted-dark); font-size:.95rem; }
-    a.publisher-link{ color:var(--accent); font-weight:600; text-decoration:none; }
   </style>
 
-  <!-- Inline SVG icons (email, github, linkedin) -->
+  <!-- SVG Icons -->
   <svg style="display:none;">
     <symbol id="icon-email" viewBox="0 0 24 24"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2m0 4l-8 5l-8-5V6l8 5l8-5z"/></symbol>
     <symbol id="icon-github" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5c.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.17-3.36-1.17c-.46-1.16-1.11-1.47-1.11-1.47c-.91-.62.07-.6.07-.6c1 .07 1.53 1.03 1.53 1.03c.9 1.52 2.34 1.07 2.91.83c.09-.65.35-1.09.63-1.34c-2.22-.25-4.56-1.11-4.56-4.92c0-1.11.38-2 1.03-2.71c-.1-.25-.45-1.29.1-2.64c0 0 .84-.27 2.75 1.03c.79-.22 1.65-.33 2.5-.33c.85 0 1.71.11 2.5.33c1.91-1.3 2.75-1.03 2.75-1.03c.55 1.35.2 2.39.1 2.64c.65.71 1.03 1.6 1.03 2.71c0 3.82-2.34 4.66-4.57 4.91c.36.31.69.92.69 1.85V21c0 .27.16.59.67.5A10 10 0 0 0 12 2Z"/></symbol>
     <symbol id="icon-linkedin" viewBox="0 0 24 24"><path d="M19 3A2 2 0 0 1 21 5v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14M8.34 17.34V10.5H5.67v6.84h2.67m-.17-7.84c.88 0 1.43-.59 1.43-1.33c-.02-.76-.55-1.34-1.41-1.34s-1.43.58-1.43 1.34c0 .74.55 1.33 1.39 1.33h.02M18.33 17.34v-3.59c0-1.92-1.02-2.81-2.37-2.81c-1.09 0-1.58.6-1.86 1.02v-0.87H11.5c.03.57 0 6.25 0 6.25h2.6v-3.49c0-.19.01-.39.07-.53c.16-.38.52-.78 1.13-.78c.8 0 1.12.59 1.12 1.45v3.35h2.61Z"/></symbol>
   </svg>
+
 </head>
 <body>
 
 <header>
   <div class="container nav">
     <div style="display:flex;gap:1rem;align-items:center;">
-      <!-- small avatar on header -->
-      <img src="profile.jpg" alt="Profile" style="width:56px;height:56px;border-radius:10px;object-fit:cover;box-shadow:0 6px 18px rgba(0,0,0,0.4);" />
+      <img src="profile.jpg" alt="Profile" style="width:56px;height:56px;border-radius:10px;object-fit:cover;" />
       <div>
-        <div style="font-weight:800;font-size:1.05rem;">Madhusnuhi Panda</div>
-        <div class="muted" style="font-size:.88rem;">NLP • Privacy-preserving ML • Differential Privacy</div>
+        <strong style="font-size:1.1rem;">Madhusnuhi Panda</strong><br>
+        <span class="muted">NLP • Privacy-preserving ML • Differential Privacy</span>
       </div>
     </div>
 
-    <nav aria-label="Main navigation">
+    <nav>
       <ul>
         <li><a href="#about">About</a></li>
         <li><a href="#experience">Experience</a></li>
@@ -145,194 +116,142 @@
 
 <main class="container">
 
-  <!-- HERO -->
-  <section class="hero" id="about" aria-labelledby="about-heading">
-    <div class="profile-col fade-up" style="align-items:center;">
-      <img src="profile.jpg" alt="Madhusnuhi Panda" class="profile-pic" />
-      <div style="text-align:center; margin-top:10px;" class="muted">B.Tech Computer Science — Research applicant (MS/PhD)</div>
+  <!-- ABOUT -->
+  <section class="hero" id="about">
+    <div class="profile-col">
+      <img src="profile.jpg" class="profile-pic" alt="Madhusnuhi Panda" />
+      <div class="muted" style="margin-top:.5rem;">B.Tech Computer Science — Research Applicant (MS/PhD)</div>
     </div>
 
-    <div class="fade-up delay" style="animation-delay:.12s">
-      <h1 id="about-heading">Research Enthusiast in NLP & Privacy-Preserving Machine Learning</h1>
-      <p class="lead muted">
-        I pursue research that strengthens the privacy and robustness of language technologies. My work sits at the intersection
-        of neural sequence modeling, differential privacy, and encrypted-data pipelines — with a practical focus on building
-        privacy-aware NLP systems suitable for deployment in real-world communication platforms.
+    <div>
+      <h1>Research Enthusiast in NLP & Privacy-Preserving Machine Learning</h1>
+      <p class="muted">
+        I work on privacy-aware NLP systems at the intersection of neural sequence modeling, differential privacy,
+        and encrypted-data machine learning. My goal is to build deployable, secure, and responsible NLP systems.
       </p>
 
-      <div class="actions">
-        <a class="btn" href="#cv">View CV</a>
-        <a class="btn" href="#projects" style="background:transparent;color:var(--accent);border:1px solid rgba(255,255,255,0.06)">Projects</a>
+      <div style="margin-top:1rem; display:flex; gap:1rem; flex-wrap:wrap;">
+        <a class="btn" href="resume.pdf" target="_blank">View CV</a>
       </div>
 
-      <div class="icons" aria-hidden="false" style="margin-top:14px;">
-        <a href="mailto:madhusnuhisanghamitrapanda7@gmail.com" aria-label="Email"><svg><use href="#icon-email"></use></svg></a>
-        <a href="https://github.com/madhusnuhi01" target="_blank" rel="noopener" aria-label="GitHub"><svg><use href="#icon-github"></use></svg></a>
-        <a href="https://www.linkedin.com/in/madhusnuhi-panda-24a409240" target="_blank" rel="noopener" aria-label="LinkedIn"><svg><use href="#icon-linkedin"></use></svg></a>
+      <div class="icons">
+        <a href="mailto:madhusnuhisanghamitrapanda7@gmail.com"><svg><use href="#icon-email"></use></svg></a>
+        <a href="https://github.com/madhusnuhi01" target="_blank"><svg><use href="#icon-github"></use></svg></a>
+        <a href="https://www.linkedin.com/in/madhusnuhi-panda-24a409240" target="_blank"><svg><use href="#icon-linkedin"></use></svg></a>
       </div>
     </div>
   </section>
 
   <!-- EXPERIENCE -->
-  <section class="section" id="experience" aria-labelledby="exp-heading">
-    <h2 id="exp-heading">Experience</h2>
+  <section class="section" id="experience">
+    <h2>Experience</h2>
     <div class="grid grid-2">
-      <div class="card fade-up">
+      <div class="card">
         <h3>Pine Labs Private Limited</h3>
-        <div class="muted">Software Engineer</div>
-        <div class="muted">Nov 2025 – Present</div>
-        <p class="muted" style="margin-top:.6rem">Worked on SQL-based reporting, ETL performance improvements, and production workflows for large-scale financial systems. Contributed to automated testing and version-controlled deployments.</p>
+        <p class="muted">Software Development Engineer Intern</p>
+        <p class="muted">Nov 2024 – Nov 2025</p>
       </div>
 
-      <div class="card fade-up delay">
+      <div class="card">
+        <h3>Pine Labs Private Limited</h3>
+        <p class="muted">Software Engineer</p>
+        <p class="muted">Nov 2025 – Present</p>
+      </div>
+
+      <div class="card">
         <h3>Providence India</h3>
-        <div class="muted">Service Engineer Intern</div>
-        <div class="muted">May 2024 – Jul 2024</div>
-        <p class="muted" style="margin-top:.6rem">Built interactive dashboards using Drupal and JS, implemented role-based access control, and developed automated notification pipelines for performance reporting.</p>
+        <p class="muted">Service Engineer Intern</p>
+        <p class="muted">May 2024 – Jul 2024</p>
       </div>
     </div>
   </section>
 
   <!-- PROJECTS -->
-  <section class="section" id="projects" aria-labelledby="proj-heading">
-    <h2 id="proj-heading">Selected Projects</h2>
+  <section class="section" id="projects">
+    <h2>Projects</h2>
+
     <div class="grid grid-2">
-      <div class="card fade-up">
-        <h3>Encrypted NLP Pipeline — WhatsApp Dataset</h3>
-        <div class="muted">DistilBERT classifier on simulated encrypted messages; pipeline for privacy-preserving preprocessing and real-time inference.</div>
-        <p style="margin-top:.6rem"><a href="https://github.com/madhusnuhi01/encrypted-nlp-whatsapp" target="_blank" class="publisher-link">GitHub</a></p>
+      <div class="card">
+        <h3>Encrypted NLP Pipeline — WhatsApp</h3>
+        <p class="muted">DistilBERT classifier on simulated encrypted messages.</p>
+        <a class="publisher-link" href="https://github.com/madhusnuhi01/encrypted-nlp-whatsapp" target="_blank">GitHub →</a>
       </div>
 
-      <div class="card fade-up delay">
+      <div class="card">
         <h3>Differentially Private Neural Machine Translation</h3>
-        <div class="muted">Bi-GRU encoder + attention decoder; Gaussian gradient noise added for DP; BLEU-based evaluation on German–English pairs.</div>
-        <p style="margin-top:.6rem"><a href="https://github.com/madhusnuhi01/privacy-preserving-nlp" target="_blank" class="publisher-link">GitHub</a></p>
+        <p class="muted">Bi-GRU encoder + attention decoder with DP noise.</p>
+        <a class="publisher-link" href="https://github.com/madhusnuhi01/privacy-preserving-nlp" target="_blank">GitHub →</a>
       </div>
 
-      <div class="card fade-up">
-        <h3>Heart Disease Prediction Algorithm</h3>
-        <div class="muted">Decision tree classifier (Kaggle dataset) with emphasis on explainability and feature engineering.</div>
-        <p style="margin-top:.6rem"><a href="https://github.com/madhusnuhi01/heart-disease-prediction" target="_blank" class="publisher-link">GitHub</a></p>
+      <div class="card">
+        <h3>Heart Disease Prediction</h3>
+        <p class="muted">Decision tree classifier with explainability features.</p>
+        <a class="publisher-link" href="https://github.com/madhusnuhi01/heart-disease-prediction" target="_blank">GitHub →</a>
       </div>
 
-      <div class="card fade-up delay">
+      <div class="card">
         <h3>IoT Pisciculture Monitoring</h3>
-        <div class="muted">Real-time monitoring model (temperature, pH, aeration) — deployed as an IEEE SeFeT 2022 paper.</div>
-        <p style="margin-top:.6rem"><a href="#publications" class="publisher-link">See publication</a></p>
+        <p class="muted">Real-time IoT-based monitoring model.</p>
+        <a class="publisher-link" href="#publications">See publication →</a>
       </div>
     </div>
   </section>
 
   <!-- PUBLICATIONS -->
-  <section class="section" id="publications" aria-labelledby="pub-heading">
-    <h2 id="pub-heading">Publications</h2>
+  <section class="section" id="publications">
+    <h2>Publications</h2>
 
-    <!-- Publication 1 -->
-    <div class="card fade-up">
+    <div class="card">
+      <div class="pub">
+        <strong>Panda, M.</strong>, Ghosh, S., Mandal, S., Raul, P., Datta, S., Roy, M. (2025).  
+        <em>Real-Time Session Monitoring Application Using Machine Learning Algorithm.</em>  
+        ICITI 2024 · LNNS Vol. 1342 · Springer  
+        <div><a class="publisher-link" href="https://doi.org/10.1007/978-981-96-5010-1_23" target="_blank">Springer DOI →</a></div>
+      </div>
 
-  <!-- Publication 1 — Springer LNNS -->
-  <div class="pub">
-    <strong>Panda, M.</strong>, Ghosh, S., Mandal, S., Raul, P., Datta, S., Roy, M. (2025). 
-    Real-Time Session Monitoring Application Using Machine Learning Algorithm. 
-    In: Sharma, H., Chakravorty, A. (eds) <em>Proceedings of International Conference on Information Technology and Intelligence (ICITI 2024)</em>. 
-    Lecture Notes in Networks and Systems, vol 1342. Springer, Singapore.
-    <div class="meta">
-      <a class="publisher-link" href="https://doi.org/10.1007/978-981-96-5010-1_23" target="_blank" rel="noopener">
-        Springer DOI: 10.1007/978-981-96-5010-1_23 →
-      </a>
+      <div class="pub">
+        S. Debdas, S. Padhi, <strong>M. Panda</strong>, C. Jain, S. S. Roy, M. Prabhu (2022).  
+        <em>Automation and Monitoring Using IoT in Pisciculture.</em>  
+        IEEE SeFeT 2022  
+        <div><a class="publisher-link" href="https://doi.org/10.1109/SeFeT55524.2022.9908693" target="_blank">IEEE DOI →</a></div>
+      </div>
     </div>
-  </div>
-
-  <!-- Publication 2 — IEEE -->
-  <div class="pub">
-    S. Debdas, S. Padhi, <strong>M. Panda</strong>, C. Jain, S. S. Roy and M. Prabhu, 
-    "Automation and Monitoring Using IoT in Pisciculture," 
-    <em>2022 IEEE 2nd International Conference on Sustainable Energy and Future Electric Transportation (SeFeT)</em>, 
-    Hyderabad, India, 2022, pp. 1-4.
-    <div class="meta">
-      <a class="publisher-link" href="https://doi.org/10.1109/SeFeT55524.2022.9908693" target="_blank" rel="noopener">
-        IEEE DOI: 10.1109/SeFeT55524.2022.9908693 →
-      </a>
-    </div>
-  </div>
-
-</div>
-
   </section>
 
-  <!-- CV VIEWER -->
-  <section class="section" id="cv" aria-labelledby="cv-heading">
-    <h2 id="cv-heading">Curriculum Vitae</h2>
-    <div class="card fade-up">
-      <!-- Embedded CV viewer. Upload resume.pdf to repo root. -->
-      <div class="cv-frame" aria-hidden="false">
-        <iframe src="resume.pdf" title="Resume (PDF)"></iframe>
+  <!-- CV SECTION -->
+  <section class="section" id="cv">
+    <h2>Curriculum Vitae</h2>
+
+    <div class="card">
+      <div style="height:900px; border-radius:12px; overflow:hidden;">
+        <iframe src="resume.pdf#toolbar=1&navpanes=0" style="width:100%; height:100%; border:none;"></iframe>
       </div>
-      <div style="margin-top:.8rem" class="muted">If embedding does not work on some browsers, the file <a href="resume.pdf" class="publisher-link" download>can be downloaded here</a>.</div>
+
+      <div style="margin-top:1rem;" class="muted">
+        If the viewer does not load, <a href="resume.pdf" target="_blank" class="publisher-link">open full PDF here →</a>
+      </div>
     </div>
   </section>
 
   <!-- CONTACT -->
-  <section class="section" id="contact" aria-labelledby="contact-heading">
-    <h2 id="contact-heading">Contact</h2>
-    <div class="grid grid-2">
-      <div class="card fade-up">
-        <h3>Get in touch</h3>
-        <p class="muted">Email: <a href="mailto:madhusnuhisanghamitrapanda7@gmail.com" class="publisher-link">madhusnuhisanghamitrapanda7@gmail.com</a></p>
-        <p class="muted">GitHub: <a href="https://github.com/madhusnuhi01" target="_blank" class="publisher-link">github.com/madhusnuhi01</a></p>
-        <p class="muted">LinkedIn: <a href="https://www.linkedin.com/in/madhusnuhi-panda-24a409240" target="_blank" class="publisher-link">linkedin.com/in/madhusnuhi-panda-24a409240</a></p>
-      </div>
+  <section class="section" id="contact">
+    <h2>Contact</h2>
 
-      <div class="card fade-up delay">
-        <h3>Application materials</h3>
-        <p class="muted">Upload your publications' PDF files to /papers and add direct links in the Publications section for easy reviewer access.</p>
-        <p class="muted">If you want, I can format each publication with DOI badges and publisher logos (Springer / IEEE) and add inline PDF previews per paper.</p>
+    <div class="grid grid-2">
+      <div class="card">
+        <p>Email: <a href="mailto:madhusnuhisanghamitrapanda7@gmail.com" class="publisher-link">madhusnuhisanghamitrapanda7@gmail.com</a></p>
+        <p>GitHub: <a href="https://github.com/madhusnuhi01" class="publisher-link" target="_blank">github.com/madhusnuhi01</a></p>
+        <p>LinkedIn: <a href="https://www.linkedin.com/in/madhusnuhi-panda-24a409240" class="publisher-link" target="_blank">linkedin.com/in/madhusnuhi-panda-24a409240</a></p>
       </div>
     </div>
   </section>
 
-  <footer>
-    © <span id="year"></span> Madhusnuhi Panda — Research Portfolio
-  </footer>
+  <footer>© <span id="year"></span> Madhusnuhi Panda — Research Portfolio</footer>
 
 </main>
 
-<!-- Small JS: set year, smooth scroll, reveal animations -->
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
-
-  // Smooth scroll for in-page anchors
-  document.querySelectorAll('a[href^="#"]').forEach(a=>{
-    a.addEventListener('click', function(e){
-      const targetId = this.getAttribute('href').slice(1);
-      const target = document.getElementById(targetId);
-      if(target){
-        e.preventDefault();
-        target.scrollIntoView({behavior:'smooth', block:'start'});
-      }
-    });
-  });
-
-  // simple reveal for fade-up elements
-  function reveal() {
-    document.querySelectorAll('.fade-up').forEach((el, i)=>{
-      const rect = el.getBoundingClientRect();
-      if(rect.top < (window.innerHeight - 60)){
-        el.style.animation = 'fadeUp .6s ease forwards';
-        el.style.opacity = 1;
-        el.style.transform = 'none';
-      }
-    });
-  }
-  window.addEventListener('scroll', reveal);
-  window.addEventListener('load', function(){
-    // initial reveal with small stagger
-    document.querySelectorAll('.fade-up').forEach((el, idx)=>{
-      el.style.animation = 'fadeUp .6s ease forwards';
-      el.style.animationDelay = (idx * 80) + 'ms';
-    });
-    reveal();
-  });
 </script>
 
 </body>
