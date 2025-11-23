@@ -4,158 +4,135 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Madhusnuhi Panda — Research Portfolio</title>
-  <meta name="description" content="Portfolio and research website of Madhusnuhi Panda — NLP, Privacy-preserving ML, Neural Machine Translation, MS/PhD applications." />
 
   <style>
+    /* ================= BASE COLORS ================= */
     :root {
-      --accent:#5b21b6;
-      --accent-hover:#6d28d9;
-      --bg-light:#ffffff;
-      --bg-dark:#0c0f17;
-      --muted-light:#4b5563;
-      --muted-dark:#9ca3af;
-      --card-light:#f8f9fb;
-      --card-dark:#111827;
+      --accent:#a78bfa;
+      --accent-hover:#c4b5fd;
+      --text-light:#ffffff;
+      --text-muted:#e5e7eb;
+      --card-bg:rgba(0,0,0,0.45);
     }
 
-    /* ---------- AUTO THEME: LIGHT ---------- */
-    @media (prefers-color-scheme: light) {
-      body { background: var(--bg-light); color:#111827; }
-      .card { background: var(--card-light); border:1px solid #e6e9ef; }
-      .muted { color: var(--muted-light); }
-      header { background:rgba(255,255,255,0.95); backdrop-filter:blur(6px); }
-    }
-
-    /* ---------- AUTO THEME: DARK ---------- */
-    @media (prefers-color-scheme: dark) {
-      body { background: var(--bg-dark); color:#e9eef8; }
-      .card { background: var(--card-dark); border:1px solid #1f2937; }
-      .muted { color: var(--muted-dark); }
-      header { background:rgba(8,10,16,0.75); backdrop-filter:blur(6px); }
-    }
-
-    /* ---------- BASE LAYOUT ---------- */
-    body {
+    body{
       margin:0;
-      font-family: Inter, system-ui;
+      font-family:Inter, system-ui;
       line-height:1.6;
+      color:var(--text-light);
 
+      /* FIXED PARALLAX BACKGROUND */
       background-attachment: fixed;
       background-image:
-        linear-gradient(to bottom, rgba(12,15,23,0.78), rgba(12,15,23,0.76)),
+        linear-gradient(to bottom, rgba(12,15,23,0.82), rgba(12,15,23,0.78)),
         url('parallax-bg.jpg');
       background-size: cover;
       background-position: center;
-
-      /* readable base text */
-      color:#e5e7eb;
     }
 
-    header {
+    h1, h2, h3 { color:var(--text-light); }
+    .muted { color:var(--text-muted); }
+
+    /* ================= LAYOUT ================= */
+    .container{ max-width:1100px; margin:0 auto; padding:1rem; }
+
+    header{
       position:sticky; top:0; z-index:60;
-      border-bottom:1px solid rgba(255,255,255,0.05);
+      background:rgba(0,0,0,0.55);
+      backdrop-filter:blur(6px);
+      border-bottom:1px solid rgba(255,255,255,0.08);
     }
 
-    .container { max-width:1100px; margin:0 auto; padding:1rem; }
-    .nav { display:flex; justify-content:space-between; align-items:center; }
-
-    nav ul {
-      list-style:none; margin:0; padding:0;
-      display:flex; gap:1.2rem;
-    }
-
-    nav a {
-      text-decoration:none;
-      font-weight:600;
-      color:#c4b5fd !important;
+    .nav{ display:flex; justify-content:space-between; align-items:center; }
+    nav ul{ list-style:none; display:flex; gap:1.2rem; padding:0; margin:0; }
+    nav a{
+      text-decoration:none; color:var(--accent);
+      font-weight:600; padding-bottom:4px;
       position:relative;
-      padding-bottom:4px;
     }
-    nav a::after {
+    nav a::after{
       content:""; position:absolute; left:0; bottom:0;
-      width:0; height:2px; background:var(--accent);
-      transition:.2s;
+      height:2px; width:0; background:var(--accent);
+      transition:0.25s;
     }
-    nav a:hover::after { width:100%; }
+    nav a:hover::after{ width:100%; }
 
-    .hero {
-      display:grid; grid-template-columns:320px 1fr;
-      gap:2.4rem; padding:3.5rem 0; align-items:center;
+    /* ================= HERO ================= */
+    .hero{
+      display:grid;
+      grid-template-columns:320px 1fr;
+      gap:2.4rem;
+      padding:3.5rem 0;
+      align-items:center;
     }
 
-    .profile-pic {
-      width:280px; height:280px; object-fit:cover;
+    .profile-pic{
+      width:280px; height:280px;
       border-radius:12px;
-      box-shadow:0 12px 28px rgba(0,0,0,0.55);
+      object-fit:cover;
+      box-shadow:0 12px 28px rgba(0,0,0,0.6);
     }
 
-    h1,h2,h3,h4,h5 { color:#ffffff !important; }
+    .icons{ display:flex; gap:1rem; margin-top:1rem; }
+    .icons svg{ width:32px; height:32px; fill:var(--accent); }
 
-    .muted { color:#d1d5db !important; }
+    /* ================= CARDS ================= */
+    .card{
+      background:var(--card-bg);
+      padding:1.25rem;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,0.08);
+    }
 
-    .btn {
-      background:var(--accent); color:white;
-      padding:.6rem 1rem; border-radius:8px;
-      text-decoration:none; font-weight:700;
+    .grid{ display:grid; gap:1rem; }
+    @media(min-width:900px){ .grid-2{ grid-template-columns:repeat(2,1fr); } }
+
+    .section{ padding:2rem 0; border-top:1px solid rgba(255,255,255,0.08); }
+
+    /* ================= BUTTON ================= */
+    .btn{
       display:inline-block;
-    }
-    .btn:hover { background:var(--accent-hover); }
-
-    .icons { display:flex; gap:.8rem; margin-top:1rem; }
-    .icons svg { width:28px; height:28px; fill:var(--accent); }
-
-    .card {
-      padding:1.25rem; border-radius:12px;
-      color:#e5e7eb !important;
-    }
-    .card p, .card span, .card div {
-      color:#e5e7eb !important;
-    }
-
-    .publisher-link {
-      color:#a78bfa !important;
-      font-weight:600;
+      background:var(--accent);
+      color:#000;
+      padding:.6rem 1rem;
+      border-radius:8px;
+      font-weight:700;
       text-decoration:none;
     }
+    .btn:hover{ background:var(--accent-hover); }
 
-    .section { padding:2rem 0; border-top:1px solid rgba(255,255,255,0.05); }
+    footer{ text-align:center; padding:2rem; color:var(--text-muted); }
 
-    .grid { display:grid; gap:1rem; }
-    @media (min-width:900px) {
-      .grid-2 { grid-template-columns:repeat(2,1fr); }
-    }
-
-    footer { text-align:center; padding:2rem; color:#9ca3af; }
-
-    @media(max-width:900px) {
-      .hero { grid-template-columns:1fr; text-align:center; }
-      .profile-pic { width:180px; height:180px; }
+    @media(max-width:900px){
+      .hero{ grid-template-columns:1fr; text-align:center; }
+      .profile-pic{ width:180px; height:180px; }
     }
   </style>
 
   <!-- ========== SVG ICONS ========== -->
   <svg style="display:none;">
     <symbol id="icon-email" viewBox="0 0 24 24">
-      <path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2m0 4l-8 5l-8-5V6l8 5l8-5z"/>
+      <path fill="currentColor" d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2m0 4l-8 5l-8-5V6l8 5l8-5z"/>
     </symbol>
+
     <symbol id="icon-github" viewBox="0 0 24 24">
-      <path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5..."/>
+      <path fill="currentColor" d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5..."/>
     </symbol>
+
     <symbol id="icon-linkedin" viewBox="0 0 24 24">
-      <path d="M19 3A2 2 0 0 1 21 5v14a2 2 0 0 1-2 2H5a2..."/>
+      <path fill="currentColor" d="M19 3A2 2 0 0 1 21 5v14a2 2 0 0 1-2 2H5a2..."/>
     </symbol>
   </svg>
 </head>
 
 <body>
-
 <header>
   <div class="container nav">
     <div style="display:flex; gap:1rem; align-items:center;">
-      <img src="profile.jpg" alt="Profile" style="width:56px;height:56px;border-radius:10px;object-fit:cover;" />
+      <img src="profile.jpg" style="width:56px;height:56px;border-radius:10px;object-fit:cover;" />
       <div>
-        <strong style="font-size:1.1rem; color:#fff;">Madhusnuhi Panda</strong><br/>
-        <span class="muted">NLP • Privacy-preserving ML • Differential Privacy</span>
+        <strong style="font-size:1.15rem; color:white;">Madhusnuhi Panda</strong><br>
+        <span class="muted">NLP • Privacy ML • Sequence Models</span>
       </div>
     </div>
 
@@ -174,23 +151,21 @@
 
 <main class="container">
 
-  <!-- ========== ABOUT ========== -->
+  <!-- ABOUT -->
   <section class="hero" id="about">
     <div class="profile-col">
-      <img src="profile.jpg" class="profile-pic" alt="Madhusnuhi Panda" />
-      <div class="muted" style="margin-top:.5rem;">B.Tech Computer Science — Research Applicant (MS/PhD)</div>
+      <img src="profile.jpg" class="profile-pic" />
+      <div class="muted" style="margin-top:.5rem;">B.Tech CSE — Research Applicant</div>
     </div>
 
     <div>
-      <h1>Research Enthusiast in NLP & Privacy-Preserving Machine Learning</h1>
+      <h1>Research in NLP & Privacy-Preserving ML</h1>
       <p class="muted">
-        I work on privacy-aware NLP systems at the intersection of neural sequence modeling,
-        differential privacy, and encrypted-data machine learning.
+        I work on neural sequence modelling, NMT systems,
+        and privacy-aware NLP (DP noise, encrypted text classification).
       </p>
 
-      <div style="margin-top:1rem; display:flex; gap:1rem; flex-wrap:wrap;">
-        <a class="btn" href="resume.pdf" target="_blank">View CV</a>
-      </div>
+      <a class="btn" href="resume.pdf" target="_blank">View CV</a>
 
       <div class="icons">
         <a href="mailto:madhusnuhisanghamitrapanda7@gmail.com"><svg><use href="#icon-email"/></svg></a>
@@ -200,10 +175,11 @@
     </div>
   </section>
 
-  <!-- ========== EXPERIENCE ========== -->
+  <!-- EXPERIENCE -->
   <section class="section" id="experience">
     <h2>Experience</h2>
     <div class="grid grid-2">
+
       <div class="card">
         <h3>Pine Labs Private Limited</h3>
         <p class="muted">Software Development Engineer Intern</p>
@@ -221,88 +197,81 @@
         <p class="muted">Service Engineer Intern</p>
         <p class="muted">May 2024 – Jul 2024</p>
       </div>
+
     </div>
   </section>
 
-  <!-- ========== PROJECTS ========== -->
+  <!-- PROJECTS -->
   <section class="section" id="projects">
     <h2>Projects</h2>
     <div class="grid grid-2">
+
       <div class="card">
         <h3>Encrypted NLP Pipeline — WhatsApp</h3>
-        <p class="muted">DistilBERT classifier on simulated encrypted messages.</p>
-        <a class="publisher-link" href="https://github.com/madhusnuhi01/encrypted-nlp-whatsapp" target="_blank">GitHub →</a>
+        <p class="muted">DistilBERT classifier over Base64-simulated encrypted chats.</p>
       </div>
 
       <div class="card">
-        <h3>Differentially Private Neural Machine Translation</h3>
-        <p class="muted">Bi-GRU encoder + attention decoder with DP noise.</p>
-        <a class="publisher-link" href="https://github.com/madhusnuhi01/privacy-preserving-nlp" target="_blank">GitHub →</a>
+        <h3>Differentially Private NMT</h3>
+        <p class="muted">Bi-GRU encoder + attention decoder trained with DP noise.</p>
       </div>
 
       <div class="card">
         <h3>Heart Disease Prediction</h3>
-        <p class="muted">Decision tree classifier with explainability features.</p>
-        <a class="publisher-link" href="https://github.com/madhusnuhi01/heart-disease-prediction" target="_blank">GitHub →</a>
+        <p class="muted">Decision tree classifier with SHAP-style interpretability.</p>
       </div>
 
       <div class="card">
         <h3>IoT Pisciculture Monitoring</h3>
-        <p class="muted">Real-time IoT-based monitoring model.</p>
-        <a class="publisher-link" href="#publications">See publication →</a>
+        <p class="muted">Real-time IoT monitoring integrated with ML alerts.</p>
       </div>
+
     </div>
   </section>
 
-  <!-- ========== PUBLICATIONS ========== -->
+  <!-- PUBLICATIONS -->
   <section class="section" id="publications">
     <h2>Publications</h2>
 
     <div class="card">
-      <div class="pub">
-        <strong>Panda, M.</strong>, Ghosh, S., Mandal, S., Raul, P., Datta, S., Roy, M. (2025).  
-        <em>Real-Time Session Monitoring Application Using Machine Learning Algorithm.</em>  
-        ICITI 2024 · LNNS Vol. 1342 · Springer  
-        <div><a class="publisher-link" href="https://doi.org/10.1007/978-981-96-5010-1_23" target="_blank">Springer DOI →</a></div>
-      </div>
 
       <div class="pub">
-        S. Debdas, S. Padhi, <strong>M. Panda</strong>, C. Jain, S. S. Roy, M. Prabhu (2022).  
-        <em>Automation and Monitoring Using IoT in Pisciculture.</em>  
-        IEEE SeFeT 2022  
-        <div><a class="publisher-link" href="https://doi.org/10.1109/SeFeT55524.2022.9908693" target="_blank">IEEE DOI →</a></div>
+        <strong>Panda, M.</strong>, Ghosh, S., Mandal, S., Raul, P., Datta, S., Roy, M. (2025).<br>
+        <em>Real-Time Session Monitoring Application Using Machine Learning Algorithm.</em><br>
+        ICITI 2024 · LNNS Vol. 1342 · Springer<br>
       </div>
+
+      <div class="pub" style="margin-top:1rem;">
+        S. Debdas, S. Padhi, <strong>M. Panda</strong>, C. Jain, S. S. Roy, M. Prabhu (2022).<br>
+        <em>Automation and Monitoring Using IoT in Pisciculture.</em><br>
+        IEEE SeFeT 2022<br>
+      </div>
+
     </div>
   </section>
 
-  <!-- ========== CV SECTION ========== -->
+  <!-- CV -->
   <section class="section" id="cv">
     <h2>Curriculum Vitae</h2>
-
     <div class="card">
-      <div style="height:900px; border-radius:12px; overflow:hidden;">
+      <div style="height:900px; overflow:hidden; border-radius:14px;">
         <iframe src="resume.pdf#toolbar=1&navpanes=0" style="width:100%; height:100%; border:none;"></iframe>
       </div>
-
-      <div style="margin-top:1rem;" class="muted">
-        If the viewer does not load, <a href="resume.pdf" target="_blank" class="publisher-link">open full PDF here →</a>
-      </div>
+      <div class="muted" style="margin-top:1rem;">If the viewer fails, <a href="resume.pdf" target="_blank" style="color:var(--accent)">open full PDF →</a></div>
     </div>
   </section>
 
-  <!-- ========== CONTACT ========== -->
+  <!-- CONTACT -->
   <section class="section" id="contact">
     <h2>Contact</h2>
-    <div class="grid grid-2">
-      <div class="card">
-        <p>Email: <a href="mailto:madhusnuhisanghamitrapanda7@gmail.com" class="publisher-link">madhusnuhisanghamitrapanda7@gmail.com</a></p>
-        <p>GitHub: <a href="https://github.com/madhusnuhi01" class="publisher-link" target="_blank">github.com/madhusnuhi01</a></p>
-        <p>LinkedIn: <a href="https://www.linkedin.com/in/madhusnuhi-panda-24a409240" class="publisher-link" target="_blank">linkedin.com/in/madhusnuhi-panda-24a409240</a></p>
-      </div>
+    <div class="card">
+      <p>Email: <a href="mailto:madhusnuhisanghamitrapanda7@gmail.com" style="color:var(--accent)">madhusnuhisanghamitrapanda7@gmail.com</a></p>
+      <p>GitHub: <a href="https://github.com/madhusnuhi01" target="_blank" style="color:var(--accent)">github.com/madhusnuhi01</a></p>
+      <p>LinkedIn: <a href="https://www.linkedin.com/in/madhusnuhi-panda-24a409240" target="_blank" style="color:var(--accent)">linkedin.com/in/madhusnuhi-panda-24a409240</a></p>
     </div>
   </section>
 
-  <footer>© <span id="year"></span> Madhusnuhi Panda — Research Portfolio</footer>
+  <footer>© <span id="year"></span> Madhusnuhi Panda</footer>
 
 </main>
 
