@@ -75,6 +75,48 @@ h1, h2, h3 {
   font-weight: 600;
 }
 
+/* --------------------------------------- */
+/* FORCE VISIBILITY OF ALL TEXT ELEMENTS   */
+/* --------------------------------------- */
+
+body{
+  margin:0;
+  font-family: Inter, system-ui;
+  line-height:1.6;
+
+  /* Visible text colors */
+  --heading-color: #ffffff;
+  --muted-color: #d1d5db;
+  --body-color: #e5e7eb;
+
+  background-attachment: fixed;
+  background-image: linear-gradient(to bottom,
+      rgba(12,15,23,0.78),
+      rgba(12,15,23,0.76)
+    ),
+    url('parallax-bg.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+h1, h2, h3 {
+  color: var(--heading-color) !important;
+}
+
+.muted {
+  color: var(--muted-color) !important;
+}
+
+.card p,
+.card span,
+.card div {
+  color: var(--body-color) !important;
+}
+
+.publisher-link {
+  color: var(--accent) !important;
+  font-weight: 600;
+}
 
     .container{ max-width:1100px; margin:0 auto; padding:1rem; }
 
@@ -290,5 +332,6 @@ h1, h2, h3 {
 
 </body>
 </html>
+
 
 
